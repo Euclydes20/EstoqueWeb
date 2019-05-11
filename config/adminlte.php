@@ -32,7 +32,7 @@ return [
 
     'logo' => '<b><i>Web</i></b><span class="text-yellow">Estoque</span>',
 
-    'logo_mini' => '<span class="text-yellow"><i class="fa fa-cubes"></i></span>',
+    'logo_mini' => '<span><i class="fa fa-industry"></i></span>',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'green',
+    'skin' => 'blue',
 
     /*
     |--------------------------------------------------------------------------
@@ -111,30 +111,29 @@ return [
         'PRINCIPAL',
         [
             'text' => 'Dashboard',
-            'url'  => 'admin/home',
+            'route'  => 'home',
             'icon' => 'dashboard'
         ],
-        'CADASTRO',
-        [
-            'text' => 'Classificações',
-            'url'  => 'admin/classifications',
-            'icon' => 'database',
-        ],
-        [
-            'text' => 'Fornecedores',
-            'url'  => 'admin/providers',
-            'icon' => 'building',
-        ],
-        [
-            'text' => 'Produtos',
-            'url'  => 'admin/products',
-            'icon' => 'shopping-cart',
-        ],
-        'ADMINISTRAÇÃO',
         [
             'text' => 'Profile',
             'url'  => 'admin/profile',
             'icon' => 'user',
+        ],
+        'CADASTRO',
+        [
+            'text' => 'Classificações',
+            'route'  => 'classifications.index',
+            'icon' => 'database',
+        ],
+        [
+            'text' => 'Fornecedores',
+            'route'  => 'providers.index',
+            'icon' => 'building',
+        ],
+        [
+            'text' => 'Produtos',
+            'route'  => 'products.index',
+            'icon' => 'shopping-cart',
         ],
     ],
 
