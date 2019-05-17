@@ -14,17 +14,18 @@ class ProductsTableSeeder extends Seeder
         $classificationsIDs = DB::table('classifications')->select('id')->get();
         $providersIDs = DB::table('providers')->select('id')->get();
 
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create("pt_BR");
 
         for ($i=1; $i <= 100; $i++) {
             DB::table('products')->insert([
-                'descricao' => $faker->text(100),
-                'qtd' => $faker->randomNumber(),
-                'prc_venda' => $faker->randomFloat(2, 100, 200),
-                'prc_compra' => $faker->randomFloat(2, 100, 200),
-                'classifications_id' => $faker->randomElement($classificationsIDs)->id,
-                'providers_id' => $faker->randomElement($providersIDs)->id,
-                'created_at' => Carbon\Carbon::now()
+                'descricao' => $faker->text(50),
+                'qtd' => $faker->randomNumber(4),
+                'estoque_minimo' => $faker->randomNumber(4),
+                'prc_venda' => $faker->randomFloat(2, 10, 9999),
+                'prc_compra' => $faker->randomFloat(2, 10, 9999),
+                'classification_id' => $faker->randomElement($classificationsIDs)->id,
+                'provider_id' => $faker->randomElement($providersIDs)->id,
+                'created_at' => now()
             ]);
         }
     }

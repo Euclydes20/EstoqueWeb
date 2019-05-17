@@ -52,6 +52,11 @@
                 </tr>
 
                 <tr>
+                    <td class='col-sm-3'>Estoque Minimo</td>
+                    <td class='col-sm-9'>{{ number_format($product->estoque_minimo, 0, '', '.') }}</td>
+                </tr>
+
+                <tr>
                     <td class='col-sm-3'>Preço Venda</td>
                     <td class='col-sm-9'>R$ {{ number_format($product->prc_venda, 2, ',', '.') }}</td>
                 </tr>

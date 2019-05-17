@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b><i>Web</i></b><span class="text-yellow">Estoque</span>',
+    'logo' => '<strong>Web<span class="text-yellow">Estoque</span></strong>',
 
-    'logo_mini' => '<span><i class="fa fa-industry"></i></span>',
+    'logo_mini' => '<strong>WE</strong>',
 
     /*
     |--------------------------------------------------------------------------
@@ -116,7 +116,7 @@ return [
         ],
         [
             'text' => 'Profile',
-            'url'  => 'admin/profile',
+            'route'  => 'profile.edit',
             'icon' => 'user',
         ],
         'CADASTRO',
@@ -134,6 +134,12 @@ return [
             'text' => 'Produtos',
             'route'  => 'products.index',
             'icon' => 'shopping-cart',
+        ],
+        'ADMINISTRAÇÃO',
+        [
+            'text' => 'Usuários',
+            'route'  => 'users.index',
+            'icon' => 'users',
         ],
     ],
 

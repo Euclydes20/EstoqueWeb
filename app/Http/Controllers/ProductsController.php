@@ -38,16 +38,11 @@ class ProductsController extends Controller
     public function index()
     {
         // Obtém todos os registros da tabela de fornecedores
-        $products = Products::orderBy('id', 'asc')->paginate(12);
+        $products = Products::orderBy('id', 'asc')->paginate(5);
 
 
         // Chama a view passando os dados retornados da tabela
-        return view(
-            'products.index',
-            [
-                'products' => $products
-            ]
-        );
+        return view('products.index',[ 'products' => $products ]);
     }
 
     /**
@@ -79,6 +74,7 @@ class ProductsController extends Controller
         $rules = [
             'descricao' => 'required|string',
             'qtd' => 'required|int|min:0',
+            'estoque_minimo' => 'required|int|min:0',
             'prc_venda' => 'required',
             'prc_compra' => 'required',
             'provider_id' => 'required',
@@ -89,10 +85,11 @@ class ProductsController extends Controller
         $messages = [
             'descricao' => 'Forneça a descrição do produto',
             'qtd' => 'A quantidade mínima deve ser 0.',
+            'estoque_minimo' => 'Forneça um valor para o estoque minimo',
             'prc_venda' => 'Forneça o valor de venda do produto.',
             'prc_compra' => 'Fornecá o valor de compra do produto.',
-            'provider' => 'Selecione um fornecedor do produto.',
-            'classification' => 'Selecione a classificação do produto.'
+            'provider_id' => 'Selecione um fornecedor do produto.',
+            'classification_id' => 'Selecione a classificação do produto.'
         ];
 
         // Primeiro, vamos validar os dados do formulário
@@ -102,6 +99,7 @@ class ProductsController extends Controller
         $product = new Products;
         $product->descricao = $request->descricao;
         $product->qtd = $request->qtd;
+        $product->estoque_minimo = $request->estoque_minimo;
         $product->prc_venda = $request->prc_venda;
         $product->prc_compra = $request->prc_compra;
         $product->provider_id = $request->provider_id;
@@ -130,13 +128,7 @@ class ProductsController extends Controller
         $product = Products::findOrFail($id);
 
         // Chama a view para exibir os dados na tela
-        return view(
-            'products.show',
-            [
-                'product' => $product
-
-            ]
-        );
+        return view('products.show',[ 'product' => $product ]);
     }
 
     /**
@@ -154,12 +146,7 @@ class ProductsController extends Controller
         $product = Products::findOrFail($id);
 
         // Chama a view com o formulário para edição do registro
-        return view(
-            'products.edit',
-            [
-                'product' => $product
-            ]
-        );
+        return view('products.edit',[ 'product' => $product ]);
     }
 
 
@@ -178,6 +165,7 @@ class ProductsController extends Controller
         $rules = [
             'descricao' => 'required|string',
             'qtd' => 'required|int|min:0',
+            'estoque_minimo' => 'required|int|min:0',
             'prc_venda' => 'required',
             'prc_compra' => 'required',
             'provider_id' => 'required',
@@ -188,10 +176,11 @@ class ProductsController extends Controller
         $messages = [
             'descricao' => 'Forneça a descrição do produto',
             'qtd' => 'A quantidade mínima deve ser 0.',
+            'estoque_minimo' => 'Forneça um valor para o estoque minimo',
             'prc_venda' => 'Forneça o valor de venda do produto.',
             'prc_compra' => 'Fornecá o valor de compra do produto.',
-            'provider' => 'Selecione um fornecedor do produto.',
-            'classification' => 'Selecione a classificação do produto.'
+            'provider_id' => 'Selecione um fornecedor do produto.',
+            'classification_id' => 'Selecione a classificação do produto.'
         ];
 
         // Primeiro, vamos validar os dados do formulário
@@ -201,6 +190,7 @@ class ProductsController extends Controller
         $product = Products::findOrFail($id);
         $product->descricao = $request->descricao;
         $product->qtd = $request->qtd;
+        $product->estoque_minimo = $request->estoque_minimo;
         $product->prc_venda = $request->prc_venda;
         $product->prc_compra = $request->prc_compra;
         $product->provider_id = $request->provider_id;
@@ -227,9 +217,6 @@ class ProductsController extends Controller
     {
         // Retorna o registro pelo ID fornecido
         $product = Products::findOrFail($id);
-
-        // Recupera a URL da view que chamou o método
-        $url = $_REQUEST['_return'];
 
         try {
             // Exclui o registro da tabela

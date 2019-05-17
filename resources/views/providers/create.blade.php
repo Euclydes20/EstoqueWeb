@@ -18,16 +18,17 @@
 @stop
 @section('content')
 
-<div class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading">Formulário de inserção de registro</div>
-    <div class="panel-body">
+<form action="{{ route('providers.store') }}" method="post" role="form">
+    {{ csrf_field() }}
 
-        <form action="{{ route('providers.store') }}" method="post" role="form">
-            {{ csrf_field() }}
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            Formulário de inserção de registro
+        </div> <!-- panel-heading -->
 
+        <div class="panel-body">
             <div class="form-group">
-
                 <label for="descricao">Nome do Fornecedor
                     <span class="text-red">*</span>
                 </label>
@@ -40,18 +41,16 @@
                             {{ $errors->first('nome') }}
                         </span>
                     @endif
-
             </div>
+        </div> <!-- panel-body -->
 
+        <div class="panel-footer">
             <a class="btn btn-default" href="{{ route('providers.index') }}">
                 <i class="fa fa-chevron-circle-left"></i> Voltar
             </a>
 
             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Gravar</button>
-
-        </form>
-
+        </div> <!-- panel-footer -->
     </div>
-</div>
-
+</form>
 @stop

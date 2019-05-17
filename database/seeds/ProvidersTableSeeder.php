@@ -11,12 +11,12 @@ class ProvidersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Faker\Factory::create("pt_BR");
 
-        for ($i=1; $i <= 100; $i++) {
+        for ($i=1; $i <= 20; $i++) {
             DB::table('providers')->insert([
                 'nome' => $faker->company(),
-                'created_at' => Carbon\Carbon::now()
+                'created_at' => now()
             ]);
         }
     }

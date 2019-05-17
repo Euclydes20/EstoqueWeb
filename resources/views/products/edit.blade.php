@@ -20,18 +20,18 @@
 @stop
 @section('content')
 
-<div class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading">Formulário de alteração de dados</div>
-    <div class="panel-body">
+<form action="{{ route('products.update', $product->id) }}" method="post" role="form">
+    {{ csrf_field() }}
+    <input type="hidden" name="_method" value="PUT">
 
-        <form action="{{ route('products.update', $product->id) }}" method="post" role="form">
-            {{ csrf_field() }}
-            <input type="hidden" name="_method" value="PUT">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Formulário de alteração de dados
+        </div> <!-- panel-heading -->
 
+        <div class="panel-body">
             <!-- descrição do produto -->
             <div class="form-group">
-
                 <label for="descricao">Descrição do Produto
                     <span class="text-red">*</span>
                 </label>
@@ -45,12 +45,10 @@
                     {{ $errors->first('descricao') }}
                 </span>
                 @endif
-
             </div>
 
             <!-- quantidade -->
             <div class="form-group">
-
                 <label for="qtd">Quantidade em estoque
                     <span class="text-red">*</span>
                 </label>
@@ -64,13 +62,27 @@
                     {{ $errors->first('qtd') }}
                 </span>
                 @endif
-
             </div>
 
+            <!-- estoque minimo -->
+            <div class="form-group">
+                <label for="qtd">Estoque minimo
+                    <span class="text-red">*</span>
+                </label>
+
+                <input type="number" class="form-control {{ $errors->has('estoque-minimo') ? 'is-invalid' : '' }}"
+                    id="estoque_minimo" name="estoque_minimo" min=0 max=99999
+                    value="{{ $product->estoque_minimo }}">
+
+                @if($errors->has('qtd'))
+                <span class='invalid-feedback text-red'>
+                    {{ $errors->first('estoque-minimo') }}
+                </span>
+                @endif
+            </div>
 
             <!-- preço de venda -->
             <div class="form-group">
-
                 <label for="prc_venda">Preço de Venda
                     <span class="text-red">*</span>
                 </label>
@@ -86,14 +98,11 @@
                         {{ $errors->first('prc_venda') }}
                     </span>
                     @endif
-
                 </div>
-
             </div>
 
             <!-- preço de compra -->
             <div class="form-group">
-
                 <label for="prc_compra">Preço de Compra
                     <span class="text-red">*</span>
                 </label>
@@ -109,94 +118,78 @@
                         {{ $errors->first('prc_compra') }}
                     </span>
                     @endif
-
                 </div>
-
             </div>
 
             <!-- fornecedor -->
             <div class="form-group">
-
                 <label for="provider_id">Fornecedor
                     <span class="text-red">*</span>
                 </label>
 
                 <div class="input-group">
                     <select name="provider_id" class="form-control">
-                        <?php
-                            $providers = DB::table('providers')
-                                ->select("id", "nome")
-                                ->orderBy("nome", "asc")
-                                ->get();
+                    <?php
+                        $providers = DB::table('providers')->select("id", "nome")->orderBy("nome", "asc")->get();
 
-                            foreach ($providers as $p) {
-                                $selected="";
-                                if ($p->id == $product->provider_id) {
-                                    $selected= "selected";
-                                }
-
-                                echo "<option value=$p->id $selected>$p->nome</option>";
+                        foreach ($providers as $p) {
+                            $selected="";
+                            if ($p->id == $product->provider_id) {
+                                $selected= "selected";
                             }
-                        ?>
+
+                            echo "<option value=$p->id $selected>$p->nome</option>";
+                        }
+                    ?>
                     </select>
 
-                    @if($errors->has('provider'))
+                    @if($errors->has('provider_id'))
                     <span class='invalid-feedback text-red'>
-                        {{ $errors->first('provider') }}
+                        {{ $errors->first('provider_id') }}
                     </span>
                     @endif
                 </div>
-
             </div>
 
             <!-- classificação -->
             <div class="form-group">
-
                 <label for="classification_id">Classificação
                     <span class="text-red">*</span>
                 </label>
 
                 <div class="input-group">
                     <select name="classification_id" class="form-control">
-                        <?php
-                            $classifications = DB::table('classifications')
-                                ->select("id", "descricao")
-                                ->orderBy("descricao", "asc")
-                                ->get();
+                    <?php
+                        $classifications = DB::table('classifications')->select("id", "descricao")
+                            ->orderBy("descricao", "asc")->get();
 
-                            foreach ($classifications as $c) {
-                                $selected="";
-                                if ($c->id == $product->classification_id) {
-                                    $selected= "selected";
-                                }
-
-                                echo "<option value=$c->id $selected>$c->descricao</option>";
+                        foreach ($classifications as $c) {
+                            $selected="";
+                            if ($c->id == $product->classification_id) {
+                                $selected= "selected";
                             }
-                        ?>
+
+                            echo "<option value=$c->id $selected>$c->descricao</option>";
+                        }
+                    ?>
                     </select>
 
-                    @if($errors->has('classification'))
+                    @if($errors->has('classification_id'))
                     <span class='invalid-feedback text-red'>
-                        {{ $errors->first('classification') }}
+                        {{ $errors->first('classification_id') }}
                     </span>
                     @endif
                 </div>
-
             </div>
+        </div> <!-- panel-body -->
 
-
-
-
-
-
+        <div class="panel-footer">
             <a class="btn btn-default" href="{{ route('products.index') }}">
                 <i class="fa fa-chevron-circle-left"></i> Voltar
             </a>
 
             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Atualizar</button>
-
-        </form>
-
-    </div>
-</div>
+        </div> <!-- panel-footer -->
+    </div> <!-- panel-default -->
+</form>
 @stop

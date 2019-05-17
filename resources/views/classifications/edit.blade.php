@@ -20,17 +20,17 @@
 @stop
 @section('content')
 
-<div class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading">Formulário de alteração de dados</div>
-    <div class="panel-body">
+<form action="{{ route('classifications.update', $classification->id) }}" method="post" role="form">
+    {{ csrf_field() }}
+    <input type="hidden" name="_method" value="PUT">
 
-        <form action="{{ route('classifications.update', $classification->id) }}" method="post" role="form">
-            {{ csrf_field() }}
-            <input type="hidden" name="_method" value="PUT">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Formulário de alteração de dados
+        </div> <!-- panel-heading -->
 
+        <div class="panel-body">
             <div class="form-group">
-
                 <label for="descricao">Descrição
                     <span class="text-red">*</span>
                 </label>
@@ -44,17 +44,16 @@
                     {{ $errors->first('descricao') }}
                 </span>
                 @endif
-
             </div>
+        </div> <!-- panel-body -->
 
+        <div class="panel-footer">
             <a class="btn btn-default" href="{{ route('classifications.index') }}">
                 <i class="fa fa-chevron-circle-left"></i> Voltar
             </a>
 
             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Atualizar</button>
-
-        </form>
-
-    </div>
-</div>
+        </div> <!-- panel-footer -->
+    </div> <!-- panel-default -->
+</form>
 @stop

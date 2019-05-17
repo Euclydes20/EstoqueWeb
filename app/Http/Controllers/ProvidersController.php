@@ -35,15 +35,10 @@ class ProvidersController extends Controller
     public function index()
     {
         // Obtém todos os registros da tabela de fornecedores
-        $providers = Providers::orderBy('id', 'asc')->paginate(12);
+        $providers = Providers::orderBy('id', 'asc')->paginate(5);
 
         // Chama a view passando os dados retornados da tabela
-        return view(
-            'providers.index',
-            [
-                'providers' => $providers
-            ]
-        );
+        return view('providers.index',[ 'providers' => $providers ]);
     }
 
     /**
@@ -98,7 +93,6 @@ class ProvidersController extends Controller
     }
 
     /**
-    /**
      * ------------------------------------------------------------------------
      * Exibe os dados de um determinado registro
      * ------------------------------------------------------------------------
@@ -112,13 +106,7 @@ class ProvidersController extends Controller
         $provider = Providers::findOrFail($id);
 
         // Chama a view para exibir os dados na tela
-        return view(
-            'providers.show',
-            [
-                'provider' => $provider
-
-            ]
-        );
+        return view('providers.show',[ 'provider' => $provider ]);
     }
 
     /**
@@ -136,12 +124,7 @@ class ProvidersController extends Controller
         $provider = Providers::findOrFail($id);
 
         // Chama a view com o formulário para edição do registro
-        return view(
-            'providers.edit',
-            [
-                'provider' => $provider
-            ]
-        );
+        return view('providers.edit',[ 'provider' => $provider ]);
     }
 
 
@@ -194,9 +177,6 @@ class ProvidersController extends Controller
     {
         // Retorna o registro pelo ID fornecido
         $provider = Providers::findOrFail($id);
-
-        // Recupera a URL da view que chamou o método
-        $url = $_REQUEST['_return'];
 
         try {
             // Exclui o registro da tabela

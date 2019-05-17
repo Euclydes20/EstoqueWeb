@@ -4,6 +4,17 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <title>@yield('title_prefix', config('adminlte.title_prefix', ''))@yield('title', config('adminlte.title', 'AdminLTE 2'))@yield('title_postfix', config('adminlte.title_postfix', ''))</title>
+
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css') }}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="{{ asset('vendor/adminlte/vendor/Ionicons/css/ionicons.min.css') }}">
 
         <title>Laravel</title>
 
@@ -12,84 +23,84 @@
 
         <!-- Styles -->
         <style>
-            html, body {
+            .background {
+                background: url("{{ asset('img/back1.jpg') }}");
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
                 background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
                 margin: 0;
+                margin-bottom: 0;
+                bottom: 0;
+                height: 600px;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
+            .footer {
+                background-color: rgba(0,0,0,0.5);
+                border-top: solid 1px #424242;
+                color: #ACACAC;
+                left: 0px;
+                right: 0px;
+                bottom:0px;
+                margin-left: auto;
+                margin-right: auto;
+                position: fixed;
+                height: 50px;
             }
         </style>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
+
+    <body class="background">
+        <!-- menu superior da página -->
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#" class="navbar-brand" style='font-family:Raleway'>
+                        <span class="text-bold">WebEstoque</span>
+                    </a>
+                </div>
+
+                @if (Route::has("login"))
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <li><a href="{{ url('/home') }}">Dashboard</a></li>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Registrar-se</a></li>
                     @endauth
+                    </ul>
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                @endif
             </div>
+        </nav>
+
+        <!-- Área central da página -->
+        <div class="content">
+
         </div>
+
+        <!-- Rodapé da página -->
+        <div class="row">
+            <footer class="main-footer footer">
+                <div class="pull-left hidden-xs" style="margin-left:10px;margin-top:15px;">
+                    Copyright &copy; 2019 - Todos os Direitos Reservados.
+                </div>
+                <div class="pull-right hidden-xs" style="margin-right:10px;margin-top:15px;">
+                    Desenvolvido por: Fernando Salles Claro
+                </div>
+            </footer>
+        </div>
+
+        <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js') }}"></script>
+        <script src="{{ asset('vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
     </body>
 </html>

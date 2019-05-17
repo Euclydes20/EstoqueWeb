@@ -83,7 +83,6 @@
                         <form action="{{ route('classifications.destroy', $classification->id) }}" method="post">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            <input type="hidden" name="_return" value="{{ Request::url() }}/?page={{  Request::get('page') }}">
 
                             <button type='submit' class='btn btn-danger btn-sm'  style="float:left">
                                 <i class='fa fa-trash'></i>
@@ -111,6 +110,7 @@ $(document).ready(function() {
         {
             "paging": false,
             "info": false,
+            "searching": false,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
             },

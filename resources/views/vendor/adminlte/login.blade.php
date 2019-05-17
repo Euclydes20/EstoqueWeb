@@ -1,19 +1,51 @@
 @extends('adminlte::master')
 
 @section('adminlte_css')
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
+
     @yield('css')
+
+        <style>
+        .background {
+            background: url("{{ asset('img/back2.jpg') }}");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-color: #fff;
+            margin: 0;
+            margin-bottom: 0;
+            bottom: 0;
+            height: 600px;
+        }
+    </style>
 @stop
 
-@section('body_class', 'login-page')
+@section('body_class', 'login-page background')
 
 @section('body')
-    <div class="login-box">
-        <div class="login-logo">
-            <a href="{{ url(config('adminlte.dashboard_url', 'home')) }}">{!! config('adminlte.logo', '<b>Admin</b>LTE') !!}</a>
+    <!-- menu superior da página -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{{ url('/#') }}" class="navbar-brand" style='font-family:Raleway'>
+                    <span>WebEstoque</span>
+                </a>
+            </div>
+
         </div>
-        <!-- /.login-logo -->
+    </nav>
+
+    <div class="login-box">
         <div class="login-box-body">
             <p class="login-box-msg">{{ trans('adminlte::adminlte.login_message') }}</p>
             <form action="{{ url(config('adminlte.login_url', 'login')) }}" method="post">
