@@ -22,7 +22,7 @@ git clone https://github.com/fsclaro/WebEstoque.git
 - DB_USER=fatec
 - DB_PASSWORD=fatec
 
-*OBS: *Não se esqueça de criar o banco de dados no SGBD MySQL.
+*OBS:* Não se esqueça de criar o banco de dados no SGBD MySQL.
 
 3. Estando no diretório do projeto, executar os seguintes comandos
 ```bash
