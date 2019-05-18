@@ -4,10 +4,10 @@
 Este sistema destina-se a ser uma base de estudo para os meus alunos da Fatec. Foi desenvolvido com o framework Laravel em sua versão 5.5.
 
 ## Pacotes de terceiros utilizados
-. Widgets - arrilot/laravel-widgets - versão:  ^3.13
-. Gravatar - creativeorange/gravatar - versão: ^1.0
-. Faker - fzaninotto/faker - versão: ^1.8
-. AdminLte - jeroennoten/laravel-adminlte - versão: ^1.25
+- Widgets - arrilot/laravel-widgets - versão:  ^3.13
+- Gravatar - creativeorange/gravatar - versão: ^1.0
+- Faker - fzaninotto/faker - versão: ^1.8
+- AdminLte - jeroennoten/laravel-adminlte - versão: ^1.25
 
 ## Processo de instalação
 
@@ -35,4 +35,3 @@ Já existem alguns dados gerados. Para acesso inicial, utilize a seguinte creden
 
 E-mail: admin@admin.com
 Senha: admin1234
-
