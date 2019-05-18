@@ -34,7 +34,7 @@ php artisan db:seed
 Após a execução destes passos, o sistema estará em condições de uso. Para isto, suba o servidor interno do Laravel
 
 ```bash
-php artisan serve
+php artisan serve --host=<IP_DA_SUA_MÁQUINA_VIRTUAL>
 ````
 
 Abra o seu navegador e aponte para o endereço http://127.0.0.1:8000
