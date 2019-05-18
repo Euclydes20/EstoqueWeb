@@ -16,7 +16,15 @@ Este sistema destina-se a ser uma base de estudo para os meus alunos da Fatec. F
 git clone https://github.com/fsclaro/WebEstoque.git
 ```
 
-2. Estando no diretório do projeto, executar os seguintes comandos
+2. Se necessário edite o arquivo *.env* e ajuste os seguintes parâmetros
+
+- DB_DATABASE=db_estoque
+- DB_USER=fatec
+- DB_PASSWORD=fatec
+
+*OBS: *Não se esqueça de criar o banco de dados no SGBD MySQL.
+
+3. Estando no diretório do projeto, executar os seguintes comandos
 ```bash
 composer install
 php artisan key:generate
