@@ -13,7 +13,7 @@ Este sistema destina-se a ser uma base de estudo para os meus alunos da Fatec. F
 
 1. Clonar o projeto através do comando
 ```bash
-git clone https://github.com/fsclaro/WebEstoque.git
+git clone https://github.com/fsclaro/WebEstoqueSJC.git
 ```
 
 2. Se necessário edite o arquivo *.env* e ajuste os seguintes parâmetros
