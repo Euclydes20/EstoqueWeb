@@ -33,5 +33,5 @@ Abra o seu navegador e aponte para o endereço http://127.0.0.1:8000
 
 Já existem alguns dados gerados. Para acesso inicial, utilize a seguinte credencial:
 
-E-mail: admin@admin.com
-Senha: admin1234
+- E-mail: admin@admin.com
+- Senha: admin1234
