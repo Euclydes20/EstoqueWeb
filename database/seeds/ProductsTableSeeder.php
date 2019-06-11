@@ -26,7 +26,7 @@ class ProductsTableSeeder extends Seeder
                 'classification_id' => $faker->randomElement($classificationsIDs)->id,
                 'provider_id' => $faker->randomElement($providersIDs)->id,
                 'created_at' => now()
-            ]);
+            ]); 
         }
     }
 }

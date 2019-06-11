@@ -15,6 +15,7 @@ class CreateSaladTable extends Migration
     {
         Schema::create('salad', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricao', 100);
             $table->timestamps();
         });
     }

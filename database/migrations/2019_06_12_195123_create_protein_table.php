@@ -15,6 +15,7 @@ class CreateProteinTable extends Migration
     {
         Schema::create('protein', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricao', 100);
             $table->timestamps();
         });
     }

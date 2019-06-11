@@ -15,6 +15,9 @@ class CreateComboTable extends Migration
     {
         Schema::create('combo', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('id_bread');
+            $table->integer('id_protein');
+            $table->integer('id_salad');            
             $table->timestamps();
         });
     }
